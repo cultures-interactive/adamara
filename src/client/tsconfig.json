@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "target": "ES2019",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "noEmit": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "isolatedModules": true,
+        "outDir": "../../dist/client",
+        "lib": [
+            "ES2019",
+            "DOM"
+        ],
+        "types": [],
+        "jsx": "react",
+        "composite": true,
+        "rootDir": "..",
+        "experimentalDecorators": true,
+        "importsNotUsedAsValues": "preserve",
+        "noImplicitAny": true,
+        "noImplicitReturns": true
+    },
+    "include": [
+        "**/*.ts",
+        "**/*.tsx",
+        "../shared/**/*.ts"
+    ],
+    "exclude": [
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "../shared/**/*.test.ts"
+    ]
+}

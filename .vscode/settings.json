@@ -1,0 +1,67 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "i18n-ally.localesPaths": [
+        "assets/locales"
+    ],
+    "i18n-ally.sourceLanguage": "de",
+    "i18n-ally.annotationMaxLength": 10000,
+    "i18n-ally.annotations": false,
+    "i18n-ally.keystyle": "nested",
+    "i18n-ally.indent": 4,
+    "i18n-ally.sortKeys": true,
+    "i18n-ally.keepFulfilled": true,
+    "i18n-ally.regex.usageMatch": [
+        "\\.addError\\(ErrorType\\.\\w*, ['\"`]({key})['\"`][\\),]",
+        "[^\\w\\d]new TranslatedError\\(['\"`]({key})['\"`][\\),]",
+        "/\\*t\\*/['\"`]({key})['\"`]",
+        "\\Wt\\(['\"`]({key})['\"`][\\),]"
+    ],
+    "i18n-ally.review.enabled": false,
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "html",
+        {
+            "language": "typescript",
+            "autoFix": true
+        },
+        {
+            "language": "typescriptreact",
+            "autoFix": true
+        }
+    ],
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "html.format.unformatted": "wbr,span,ul",
+    "html.format.wrapLineLength": 0,
+    "cSpell.language": "en-GB",
+    "cSpell.words": [
+        "Adamara",
+        "appmetrics",
+        "autorun",
+        "CAROOT",
+        "databack",
+        "Dozzle",
+        "GLSL",
+        "interactable",
+        "mariadb",
+        "phpmyadmin",
+        "Pixi",
+        "Umzug"
+    ],
+    "cSpell.ignoreWords": [
+        "NRAL",
+        "Ojdrj",
+        "Sicht",
+        "Stadtwache",
+        "dfagh",
+        "gameengine",
+        "somepassword",
+        "someuser",
+        "ygiiq",
+        "ystl"
+    ]
+}

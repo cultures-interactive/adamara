@@ -1,0 +1,30 @@
+@startuml MapModel
+    skinparam monochrome true
+    skinparam backgroundcolor transparent
+    hide circle
+
+    class MapModel {
+        name: string 
+        version: number 
+    }
+    MapModel *-> "*" TileModel : tiles
+    MapModel *--> "*" ObjectModel : objects
+
+    class TileModel {
+        tileAssetId: string
+    }
+    TileModel *-> "1" PositionModel
+
+    class ObjectModel {
+        
+    }
+    ObjectModel *-> "1" PositionModel
+    ObjectModel *--> "1" ObjectPropertiesModel
+    ObjectPropertiesModel *-> "*"  TranslatedString : properties
+
+    class PositionModel {
+        x: number
+        y: number
+        layer: number
+    }
+@enduml

@@ -1,0 +1,15 @@
+/dist
+/.env
+/.idea
+/node_modules
+/dumps
+/notes.txt
+/temporary-captain-to-deploy.tar
+/logs
+/temp
+nodejs_dc.log
+nodejs_restclient.log
+resourceRegistry.log
+newrelic_agent.log
+cert/
+tools/root-ca-generation-windows/Root CA Installation Package/

@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "ES2019",
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "declaration": true,
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "isolatedModules": true,
+        "outDir": "../../dist/shared",
+        "lib": ["ES2019"],
+        "composite": true,
+        "experimentalDecorators": true,
+        "importsNotUsedAsValues": "preserve",
+        "noImplicitAny": true,
+        "noImplicitReturns": true
+    },
+    "include": ["**/*.ts"],
+    "exclude": ["**/*.test.ts"],
+}

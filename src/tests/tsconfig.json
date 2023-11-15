@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES2019",
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "lib": [
+            "ES2019",
+            "dom"
+        ],
+        "jsx": "react",
+        "types": [
+            "node",
+            "jest"
+        ],
+        "noEmit": true,
+        "experimentalDecorators": true
+    }
+}

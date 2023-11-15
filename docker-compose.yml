@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  adamara_local_db:
+    image: 'mariadb:10.4.20'
+    container_name: adamara_local_db_container
+    volumes:
+      - ./dumps:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=${ADAMARA_DB_ROOT_PASSWORD}
+      - MYSQL_USER=${ADAMARA_DB_USER}
+      - MYSQL_PASSWORD=${ADAMARA_DB_USER_PASSWORD}
+      - MYSQL_DATABASE=${ADAMARA_DB_NAME}
+    ports:
+      - "3306:3306"

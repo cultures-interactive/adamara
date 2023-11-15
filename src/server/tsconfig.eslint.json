@@ -1,0 +1,9 @@
+{
+    // This file exists to allow ESLint to lint the tests (that are explicitly excluded in tsconfig.json)
+    "extends": "./tsconfig.json",
+    "include": [
+        "**/*.test.ts",
+        "../shared/**/*.test.ts"
+    ],
+    "exclude": []
+}
