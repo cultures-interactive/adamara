@@ -365,4 +365,4 @@ The game Adamara was produced as part of the project Call of Prev, a model proje
 - **Marie Jäger**: Scientific Researcher
 - **Csongor Baranyai**: UX Designer ([Website](http://csongorb.com), [Twitter](https://twitter.com/csongorb), [Mastodon](https://mastodon.social/@csongor))
 
-(Are you missing from the list? Or want something changed? Send a mail to Tobias.Wehrum@dragonlab.de, or a pull request here.)
+(Are you missing from the list? Or want something changed? Send a mail to Tobias.Wehrum@dragonlab.de, or do a pull request here.)
