@@ -63,13 +63,12 @@ You can watch the German game teaser here:
 ## System requirements
 
 Server/development:
-
-- 16 GB RAM recommended (the server will use 4 - 6 GB RAM or more, depending on the amount of assets)
-- 20 GB free disk space (4 GB for the code and static assets, 1 GB for the database; more for Docker, CapRover and similar tools, caching, and the deployment process)
+- RAM: 16 GB recommended (the server will use 4 - 6 GB RAM or more, depending on the amount of assets)
+- Disk space: 20 GB free disk space (4 GB for the code and static assets, 1 GB for the database; more for Docker, CapRover and similar tools, caching, and the deployment process)
 
 Clients (opening the editor/game web app):
 - Browser: Google Chrome (other browsers may work, but are untested)
-- 8 GB RAM (the game/editor will use 2 - 3 GB)
+- RAM: 8 GB (the game/editor will use 2 - 3 GB)
 - Tested most on our target device: Microsoft Surface Pro 6 (2018)
 - At the time this readme is written, iOS [has a bug](https://github.com/socketio/socket.io/issues/4263) which might prevent the editor from connecting to the server.
 
