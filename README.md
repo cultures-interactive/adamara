@@ -54,6 +54,12 @@ A dump of the database (containing the full game and all game assets) is availab
 The game assets (art, animations, sound etc.) are separately available here:
 - TODO (License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0))
 
+## Game Teaser
+
+You can watch the German game teaser here:
+
+[![Game teaser preview image](./documentation/images/teaser-video-thumbnail.jpg)](https://www.youtube.com/watch?v=EdVFUJPmzWE)
+
 ## System requirements
 
 Server/development:
