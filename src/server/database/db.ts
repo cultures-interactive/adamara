@@ -97,7 +97,7 @@ export async function initializeDatabase() {
         if (hasOldMigrationTable) {
             const hasNewMigrationTable = await queryInterface.tableExists(migrationTableName);
             if (hasNewMigrationTable) {
-                throw new Error(`Both migration tables "${oldMigrationTableName}" (old) and "${migrationTableName}" new were found. This is usually the case when a database dump was imported. Please delete the table that was *not* freshly imported and restart this app.`);
+                throw new Error(`Both migration tables "${oldMigrationTableName}" (old) and "${migrationTableName}" (new) were found. This is usually the case when a database dump was imported. Please delete the table that was *not* freshly imported and restart this app.`);
             }
             logger.info(`Renaming migration table from "${oldMigrationTableName}" to "${migrationTableName}."`);
             await queryInterface.renameTable(oldMigrationTableName, migrationTableName);
