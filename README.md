@@ -6,7 +6,7 @@
 - [Documentation](#documentation)
 - [Database dump & game assets](#database-dump--game-assets)
 - [System requirements](#system-requirements)
-- [Setup](#setup)
+- [Development Setup](#development-setup)
 - [Deploy on a server (using CapRover)](#deploy-on-a-server-using-caprover)
 - [Run the server from a laptop in the local network](#run-the-server-from-a-laptop-in-the-local-network)
 - [NPM commands](#npm-commands)
@@ -48,7 +48,7 @@ Additional documentation in German:
 
 ## Database dump & game assets
 
-A dump of the database (containing the full game and all game assets) is available here:
+A dump of the database (containing the full game and most game assets) is available here:
 - https://drive.google.com/file/d/1Ugfe04A2NthHCSJajXdDPXv1MPDJBqZd/view (License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0))
 
 The game assets (art, animations, sound etc.) are separately available here:
@@ -72,7 +72,7 @@ Clients (opening the editor/game web app):
 - Tested most on our target device: Microsoft Surface Pro 6 (2018)
 - At the time this readme is written, iOS [has a bug](https://github.com/socketio/socket.io/issues/4263) which might prevent the editor from connecting to the server.
 
-## Setup
+## Development Setup
 
 1. Install the node version mentioned in package.json (currently 14.17.1), for example via a version manager like [NVM Windows](https://github.com/coreybutler/nvm-windows) / [NVM (for Linux/macOS)](https://github.com/nvm-sh/nvm) (recommended), or directly from https://nodejs.org/dist/v14.17.1.
 2. Pull this project.
@@ -365,4 +365,4 @@ The game Adamara was produced as part of the project Call of Prev, a model proje
 - **Marie Jäger**: Scientific Researcher
 - **Csongor Baranyai**: UX Designer ([Website](http://csongorb.com), [Twitter](https://twitter.com/csongorb), [Mastodon](https://mastodon.social/@csongor))
 
-(Are you missing from the list? Or want something changed? Send a mail to Tobias.Wehrum@dragonlab.de, or do a pull request here.)
+(Are you missing from the list? Or do you want something changed? Send a mail to Tobias.Wehrum@dragonlab.de or change it yourself via a pull request here.)
