@@ -22,6 +22,7 @@ import { TreeExitActionModel, TreePropertiesActionModel } from "../../shared/act
 import { Workshop } from "../database/models/Workshop";
 import { generateUniqueAccesscode, moduleParticipantAccessCodeConfig, workshopAdminAccessCodeConfig, workshopPlayCodeConfig } from "../../shared/helper/accesscodeHelpers";
 import { createPlayableModule } from "../helper/moduleHelpers";
+import { sendToSentryAndLogger } from "../integrations/errorReporting";
 
 const allWorkshopsRoom = "allWorkshops";
 const getWorkshopSocketRoom = (workshopId: string) => "workshop_" + workshopId;
@@ -39,8 +40,16 @@ export class ManagementServer extends ServerBase<ManagementClientToServerEvents,
     public start() {
         super.init();
 
-        this.io.on("connection", this.onConnection.bind(this));
+        this.io.on("connection", this.onConnectionWithErrorHandling.bind(this));
         logger.info("ManagementServer: socket.io server ready.");
+    }
+
+    private async onConnectionWithErrorHandling(socket: Socket<ManagementClientToServerEvents, ManagementServerToClientEvents>): Promise<void> {
+        try {
+            await this.onConnection(socket);
+        } catch (e) {
+            sendToSentryAndLogger(e);
+        }
     }
 
     private async onConnection(socket: Socket<ManagementClientToServerEvents, ManagementServerToClientEvents>): Promise<void> {
@@ -51,6 +60,11 @@ export class ManagementServer extends ServerBase<ManagementClientToServerEvents,
             throwIfUserIsNotLoggedIn,
             getLatestEventName
         } = super.connectSocket(socket);
+
+        if (!socket.request.user) {
+            logger.warn(`[ManagementServer] User session not found.`);
+            return;
+        }
 
         const { privilegeLevel } = socket.request.user;
         if (privilegeLevel === UserPrivileges.Admin) {

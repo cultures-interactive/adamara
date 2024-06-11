@@ -60,8 +60,16 @@ export class EditorServer extends ServerBase<EditorClientToServerEvents, EditorS
     public start() {
         super.init();
 
-        this.io.on("connection", this.onConnection.bind(this));
+        this.io.on("connection", this.onConnectionWithErrorHandling.bind(this));
         logger.info("EditorServer: socket.io server ready.");
+    }
+
+    private async onConnectionWithErrorHandling(socket: Socket<EditorClientToServerEvents, EditorServerToClientEvents>): Promise<void> {
+        try {
+            await this.onConnection(socket);
+        } catch (e) {
+            sendToSentryAndLogger(e);
+        }
     }
 
     private async onConnection(socket: Socket<EditorClientToServerEvents, EditorServerToClientEvents>): Promise<void> {
