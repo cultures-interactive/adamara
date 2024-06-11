@@ -5,12 +5,19 @@ import { TileAsset } from "../database/models/TileAsset";
 import { AnimationAsset } from "../database/models/AnimationAsset";
 import { SOUND_FOLDER } from "../config";
 import { logger } from "../integrations/logging";
+import { Item } from "../database/models/Item";
+import { Image } from "../database/models/Image";
+import { ImageUsecase } from "../../shared/resources/ImageModel";
 
 const exportPath = "temp/export";
 const exportPathTiles = path.join(exportPath, "tiles");
 const exportPathAnimations = path.join(exportPath, "animations");
+const exportPathItems = path.join(exportPath, "items");
+const exportPathOther = path.join(exportPath, "other");
 const exportPathSounds = path.join(exportPath, "sounds");
 const exportPathGameUI = path.join(exportPath, "game-ui");
+
+const filenameSanitizer = /[^A-Za-z0-9 ]/g;
 
 export async function exportMedia() {
     await remove(exportPathTiles);
@@ -45,6 +52,35 @@ export async function exportMedia() {
     }
 
     logger.info("All animations exported.");
+
+    logger.info("Exporting items and other images...");
+
+    await remove(exportPathItems);
+    await ensureDir(exportPathItems);
+
+    await remove(exportPathOther);
+    await ensureDir(exportPathOther);
+
+    const items = (await Item.findAll({ where: { deleted: false } })).map(item => item.snapshot);
+    for (const image of await Image.findAll({ where: { deleted: false } })) {
+        const { id, snapshot: { usecase, moduleOwner }, imageData } = image;
+        if (moduleOwner)
+            continue;
+
+        if (usecase == ImageUsecase.Item) {
+            const item = items.find(item => (item.itemImageId == id) && !item.moduleOwner);
+            let name = "unused" + id;
+            if (item != null) {
+                name = item.name.text.items["en"] ?? item.name.text.items["de"] ?? item.id;
+                name = name.replace(filenameSanitizer, "_");
+            }
+            await writeFile(path.join(exportPathItems, `${name}.png`), imageData);
+        } else {
+            await writeFile(path.join(exportPathOther, `${ImageUsecase[usecase]}_${id}.png`), imageData);
+        }
+    }
+
+    logger.info("All items and display images exported.");
 
     logger.info("Copying sounds...");
 
