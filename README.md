@@ -49,7 +49,7 @@ Additional documentation in German:
 ## Database dump & game assets
 
 A dump of the database (containing the full game and all game assets) is available here:
-- https://drive.google.com/file/d/1RDnKvDgQ13ZmYMQl6xNFdSiNodFsSEn9/view (License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0))
+- https://drive.google.com/file/d/1Ugfe04A2NthHCSJajXdDPXv1MPDJBqZd/view (License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0))
 
 The game assets (art, animations, sound etc.) are separately available here:
 - https://drive.google.com/drive/folders/1a-X0hVuhpUyYIpwt0f7bFZegkuWGLIWU (License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0))
