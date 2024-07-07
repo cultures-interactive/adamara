@@ -161,17 +161,17 @@ VSCode Extensions (can be installed by name via the "Extensions" window directly
       - Click "Save & Update"
    5. Under "App Configs":
       - Environmental Variables: Bulk Edit, paste the content from [.env.deploy.template](.env.deploy.template) and fill in the values.
-        - DB_URL: `mysql://adamara:YOUR_ADAMARA_USER_PASSWORD@srv-captain--app-mariadb-db:3306/adamara`
+        - DB_URL: `mysql://adamara:YOUR_ADAMARA_DATABASE_USER_PASSWORD_FROM_STEP_4_2_HERE@srv-captain--adamara-mariadb-db:3306/adamara`
         - SESSION_SECRET: A random UUID
         - SERVICE_API_KEY: Another random UUID
         - ACCESS_CODE: The admin password you want to use to login in to the Adamara app
-        - SERVER_BASE_URL: `https://app.YOUR-URL-GOES-HERE.com`
+        - SERVER_BASE_URL: `https://adamara.YOUR-URL-GOES-HERE.com`
       - Persistent Directories:
-        - Path in app: `/logs`, Label: `app-logs`
-        - Path in app: `/temp`, Label: `app-temp`
+        - Path in app: `/logs`, Label: `adamara-logs`
+        - Path in app: `/temp`, Label: `adamara-temp`
       - Click "Save & Update"
    5. Under "Deployment":
-      - Configure "Method 3: Deploy from Github/Bitbucket/Gitlab" to point to this (or your) repository and deploy.
+      - Configure "Method 3: Deploy from Github/Bitbucket/Gitlab" to point to this (or your) repository and via "Save & Update" followed by "Force Build". (If CapRover complains about "1000 : Missing required Github/BitBucket/Gitlab field" because you are leaving the username/password empty for our public project, just enter something random into the `Username` and `Password` fields.)
       - Check "View Build Logs" to see if the build finishes correctly.
       - Check "View App Logs" to see if the app starts correctly. The start up is complete once you see:
         ```
