@@ -121,8 +121,8 @@ VSCode Extensions (can be installed by name via the "Extensions" window directly
 ## Deploy on a server (using CapRover)
 
 1. [Install and set up CapRover](https://caprover.com/docs/get-started.html) (until including step 3) on a server with at least 16 GB RAM.
-   - The easiest way to do this is probably the DigitalOcean One-Click App mentioned in the document.
-   - While 16 GB RAM is recommended, 8 GB RAM might work too if you [create a swap file](https://linuxize.com/post/create-a-linux-swap-file/). If you run into trouble while building, you might want to upgrade to 16 GB and try again.
+   - The easiest (but definitely not the cheapest) way to do this is probably the DigitalOcean One-Click App mentioned in the document. Other alternatives are for example Hetzner using [this tutorial](https://community.hetzner.com/tutorials/install-caprover).
+   - While 16 GB RAM is recommended for running the Adamara server, 8 GB RAM might work too. If you want to try that and it doesn't work, [create a swap file](https://linuxize.com/post/create-a-linux-swap-file/). If that doesn't help, you might want to upgrade to 16 GB and try again.
 2. Open the CapRover frontend (https://captain.your-url.com).
 3. Create MariaDB instance:
    1. "Apps" -> "Create new App" -> "One-Click Apps/Databases": "MariaDB"
@@ -140,14 +140,14 @@ VSCode Extensions (can be installed by name via the "Extensions" window directly
       ```
    4. Click "Deploy now".
 4. Create the database:
-   1. Add "phpmyadmin" as a CapRover app.
-   2. Log into phpmyadmin and create a new database "adamara" with a user "adamara".
+   1. "Apps" -> "Create new App" -> "One-Click Apps/Databases": "phpmyadmin"
+   2. Log into phpmyadmin (the database server that you just created is available under `srv-captain--adamara-mariadb-db`) and create a new database "adamara" with a user "adamara" that has all rights for the "adamara" database except GRANT.
    3. Optionally, if you want to use our database:
       1. Log into the server with an SSH client, e.g. PuTTY
-      2. Download the [database dump](#database-dump--game-assets) and place it into `/var/lib/docker/volumes/captain--app-mariadb-db-data/_data` as `dump.sql`.
+      2. Download the [database dump](#database-dump--game-assets) and place it into `/var/lib/docker/volumes/captain--adamara-mariadb-db-data/_data` as `dump.sql`.
       3. `docker ps`
-      4. Check what the current database app name is, e.g. `srv-captain--app-mariadb-db.1.ystl2yu4ygiiq1qsn8bjs6fgr`
-      5. `docker exec -it srv-captain--app-mariadb-db.1.ystl2yu4ygiiq1qsn8bjs6fgr /bin/bash`
+      4. Check what the current database app name is, e.g. `srv-captain--adamara-mariadb-db.1.ystl2yu4ygiiq1qsn8bjs6fgr`
+      5. `docker exec -it srv-captain--adamara-mariadb-db.1.ystl2yu4ygiiq1qsn8bjs6fgr /bin/bash`
       6. `mysql -u root -p adamara < /var/lib/mysql/dump.sql`
 4. Create the adamara server:
    1. "Apps" -> "Create new App"
@@ -187,9 +187,9 @@ There are a few tools that are also recommended, but not necessary:
 - **mysql-backup**: Automatic backups
   1. Create an app with persistent data.
   2. deploy via image name: `databack/mysql-backup:latest`
-  3. Make a persistent directory `/backup` with label `app-mysql-backup`
+  3. Make a persistent directory `/backup` with label `adamara-mysql-backup`
   4. Set env variables:
-     - DB_SERVER: `srv-captain--app-mariadb-db`
+     - DB_SERVER: `srv-captain--adamara-mariadb-db`
      - DB_USER: `root`
      - DB_PASS: Your database root password
      - DB_DUMP_TARGET: `/backup`
