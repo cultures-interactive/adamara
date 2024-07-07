@@ -10,7 +10,6 @@ import { Item } from "./models/Item";
 import { CharacterConfiguration } from "./models/CharacterConfiguration";
 import { Image } from "./models/Image";
 import { logger } from "../integrations/logging";
-import { DebugTimer } from "../helper/DebugTimer";
 import { GameDesignVariables } from "./models/GameDesignVariables";
 import { patchedSave } from "../helper/sequelizeUtils";
 import { Workshop } from "./models/Workshop";
@@ -19,6 +18,8 @@ import { regularlyScheduleAsyncBackgroundTransaction } from "../helper/asyncUtil
 import { startSegment } from "newrelic";
 import { sendToSentryAndLogger } from "../integrations/errorReporting";
 import { MakeshiftTranslationSystemData } from "./models/MakeshiftTranslationSystemData";
+import { ActionTreeModel, ActionTreeType } from "../../shared/action/ActionTreeModel";
+import { getSnapshot } from "mobx-keystone";
 
 const connectionURL = process.env.DB_URL;
 
@@ -142,8 +143,27 @@ export async function loadMapsIntoServerState(serverState: ServerState) {
 
 export async function loadActionTreesIntoServerState(serverState: ServerState) {
     const actionTrees = await ActionTree.findAll();
-    for (const actionTree of actionTrees) {
-        serverState.createAndAddActionTreeWithMetaData(actionTree);
+    if (actionTrees.length == 0) {
+        logger.info("No MainGameRoot action tree found. Creating...");
+        const mainGameRootActionTree = ActionTreeModel.createEmptyPrototype();
+        mainGameRootActionTree.setType(ActionTreeType.MainGameRoot);
+
+        // Move exit action model further to the right so the subtree shows larger in action editor
+        const exitNodeXPosition = 4000;
+        const treeExistAction = mainGameRootActionTree.exitActions[0];
+        treeExistAction.position.setX(exitNodeXPosition);
+
+        const mainGameRootActionTreeSnapshot = getSnapshot(mainGameRootActionTree);
+        const newActionTree = await ActionTree.create({
+            snapshotJSONString: JSON.stringify(mainGameRootActionTreeSnapshot),
+            id: mainGameRootActionTreeSnapshot.$modelId,
+            deleted: false
+        });
+        serverState.createAndAddActionTreeWithMetaData(newActionTree);
+    } else {
+        for (const actionTree of actionTrees) {
+            serverState.createAndAddActionTreeWithMetaData(actionTree);
+        }
     }
 }
 

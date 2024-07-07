@@ -22,6 +22,11 @@ export const up: MigrationFn<QueryInterface> = async ({ context: queryInterface 
 
         const allActionTrees = await ActionTree.findAll();
 
+        if (allActionTrees.length === 0) {
+            logger.info("No action trees found. Skipping this migration.");
+            return;
+        }
+
         for (const actionTree of allActionTrees) {
             const snapshot = actionTree.getSnapshot();
 
