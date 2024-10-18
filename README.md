@@ -4,6 +4,10 @@
 
 Eine deutsche Version dieses Dokuments findet sich hier: [LIESMICH.pdf](https://cultures-interactive.github.io/adamara/LIESMICH.pdf).
 
+Weitere Dokumente in Deutsch:
+- [Workshop-Ablauf und Editor-Benutzung (PDF)](https://www.cultures-interactive.de/files/projekte/Call%20of%20Prev/Adamara_GUIDE_Workshop-Editor-Nutzung.pdf)
+- [Mehr Informationen zum Projekt](https://www.cultures-interactive.de/de/Call-of-Prev-Projekt.html)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
