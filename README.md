@@ -2,7 +2,7 @@
 
 ## Deutsche Version / German Version
 
-Eine deutsche Version dieses Dokuments findet sich hier: [LIESMICH.pdf](LIESMICH.pdf).
+Eine deutsche Version dieses Dokuments findet sich hier: [LIESMICH.pdf](https://cultures-interactive.github.io/adamara/LIESMICH.pdf).
 
 ## Table of Contents
 
