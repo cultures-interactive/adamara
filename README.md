@@ -1,5 +1,9 @@
 # Adamara: Harsh Waters
 
+## Deutsche Version / German Version
+
+Eine deutsche Version dieses Dokuments findet sich hier: [LIESMICH.pdf](LIESMICH.pdf).
+
 ## Table of Contents
 
 - [Introduction](#introduction)
